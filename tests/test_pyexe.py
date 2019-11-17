@@ -551,7 +551,7 @@ def testImportFromExePath(exepath):
 def testSubprocesNonPython(exepath):
     out, err = runPyExe(exepath, [
         '-c', 'import subprocess;subprocess.call(["nslookup.exe", "github.com"])'])
-    assert 'Addresses' in out
+    assert 'Address' in out
 
 
 def testThreadGlobals(exepath):
