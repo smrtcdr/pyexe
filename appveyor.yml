@@ -28,6 +28,8 @@ init:
   # - cd %PROJDIR%
   # Print the build system version
   - ver
+  # Print the Python version
+  - python -V
 
 build_script:
   # Upgrade the appveyor python version
