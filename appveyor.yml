@@ -1,37 +1,21 @@
 environment:
   matrix:
-    - PYTHON: "C:\\Python37"
-      INSTALL_OPTIONS: 3.7 --min=2
-      OUTPUT: "py37.exe"
-      ALTPYTHON: "C:\\Python36-x64"
     - PYTHON: "C:\\Python37-x64"
       INSTALL_OPTIONS: 3.7 --min=2 --64
       OUTPUT: "py37-64.exe"
       ALTPYTHON: "C:\\Python36-x64"
-    - PYTHON: "C:\\Python27"
-      INSTALL_OPTIONS: 2.7 --min=15
-      OUTPUT: "py27.exe"
-      ALTPYTHON: "C:\\Python36-x64"
-    - PYTHON: "C:\\Python27-x64"
-      INSTALL_OPTIONS: 2.7 --min=15 --64
-      OUTPUT: "py27-64.exe"
-      ALTPYTHON: "C:\\Python36-x64"
-    - PYTHON: "C:\\Python35"
-      INSTALL_OPTIONS: 3.5 --min=4
-      OUTPUT: "py35.exe"
-      ALTPYTHON: "C:\\Python36-x64"
-    - PYTHON: "C:\\Python35-x64"
-      INSTALL_OPTIONS: 3.5 --min=4 --64
-      OUTPUT: "py35-64.exe"
-      ALTPYTHON: "C:\\Python36-x64"
-    - PYTHON: "C:\\Python36"
-      INSTALL_OPTIONS: 3.6 --min=8
-      OUTPUT: "py36.exe"
-      ALTPYTHON: "C:\\Python36-x64"
-    - PYTHON: "C:\\Python36-x64"
-      INSTALL_OPTIONS: 3.6 --min=8 --64
-      OUTPUT: "py36-64.exe"
-      ALTPYTHON: "C:\\Python36"
+    # - PYTHON: "C:\\Python37"
+    #   INSTALL_OPTIONS: 3.7 --min=2
+    #   OUTPUT: "py37.exe"
+    #   ALTPYTHON: "C:\\Python36-x64"
+    # - PYTHON: "C:\\Python27-x64"
+    #   INSTALL_OPTIONS: 2.7 --min=15 --64
+    #   OUTPUT: "py27-64.exe"
+    #   ALTPYTHON: "C:\\Python36-x64"
+    # - PYTHON: "C:\\Python27"
+    #   INSTALL_OPTIONS: 2.7 --min=15
+    #   OUTPUT: "py27.exe"
+    #   ALTPYTHON: "C:\\Python36-x64"
 
 init:
   - SET PROJDIR=%cd%
@@ -39,8 +23,8 @@ init:
   # Disable upx; it doesn't work with Python 3 for some reason
   # - mkdir c:\u
   # - cd c:\u
-  # - curl -L -O "https://github.com/upx/upx/releases/download/v3.94/upx394w.zip"
-  # - unzip upx394w.zip
+  # - curl -L -O "https://github.com/upx/upx/releases/download/v3.95/upx-3.95-win64.zip"
+  # - unzip upx-3.95-win64.zip
   # - cd %PROJDIR%
   # Print the build system version
   - ver
@@ -82,7 +66,7 @@ build_script:
   - del /S /Q %PYTHON%\*.pyo >NUL
   # Save the artifact immediately
   - appveyor PushArtifact pyexe.py
-  - "python -m PyInstaller --onefile pyexe.py --upx-dir C:\\u\\upx394w --exclude-module FixTk --exclude-module tcl --exclude-module tk --exclude-module _tkinter --exclude-module tkinter --exclude-module Tkinter --runtime-hook hooks\\rth_subprocess.py --runtime-hook hooks\\rth_pip.py --icon %PYTHON%\\pythonw.exe --add-binary %PYTHON%\\Lib\\site-packages\\setuptools\\cli-32.exe;setuptools --add-binary %PYTHON%\\Lib\\site-packages\\setuptools\\cli-64.exe;setuptools --add-binary %PYTHON%\\Lib\\site-packages\\setuptools\\cli.exe;setuptools --add-binary \"%PYTHON%\\Lib\\site-packages\\setuptools\\command\\launcher manifest.xml;setuptools\\command\""
+  - "python -m PyInstaller --onefile pyexe.py --upx-dir C:\\u\\upx-3.95-win64 --exclude-module FixTk --exclude-module tcl --exclude-module tk --exclude-module _tkinter --exclude-module tkinter --exclude-module Tkinter --runtime-hook hooks\\rth_subprocess.py --runtime-hook hooks\\rth_pip.py --icon %PYTHON%\\pythonw.exe --add-binary %PYTHON%\\Lib\\site-packages\\setuptools\\cli-32.exe;setuptools --add-binary %PYTHON%\\Lib\\site-packages\\setuptools\\cli-64.exe;setuptools --add-binary %PYTHON%\\Lib\\site-packages\\setuptools\\cli.exe;setuptools --add-binary \"%PYTHON%\\Lib\\site-packages\\setuptools\\command\\launcher manifest.xml;setuptools\\command\""
   - cp dist\pyexe.exe %OUTPUT%
   # Save the artifact immediately
   - appveyor PushArtifact %OUTPUT%
