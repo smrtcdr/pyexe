@@ -1,13 +1,13 @@
 environment:
   matrix:
     - PYTHON: "C:\\Python38-x64"
-      INSTALL_OPTIONS: 3.8 --min=1 --64
+      INSTALL_OPTIONS: 3.8 --min=0 --64
       OUTPUT: "py38-64.exe"
       ALTPYTHON: "C:\\Python36-x64"
-    - PYTHON: "C:\\Python38"
-      INSTALL_OPTIONS: 3.8 --min=1
-      OUTPUT: "py38.exe"
-      ALTPYTHON: "C:\\Python36-x64"
+    # - PYTHON: "C:\\Python37"
+    #   INSTALL_OPTIONS: 3.7 --min=5
+    #   OUTPUT: "py37.exe"
+    #   ALTPYTHON: "C:\\Python36-x64"
     # - PYTHON: "C:\\Python27-x64"
     #   INSTALL_OPTIONS: 2.7 --min=15 --64
     #   OUTPUT: "py27-64.exe"
