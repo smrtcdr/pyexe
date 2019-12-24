@@ -98,7 +98,7 @@ deploy:
     tag: 'pyexe-latest'
     release: 'Release pyexe-latest'
     auth_token:
-      secure: eZTbjLwRZpxLMEv/JRluSRNTPXElhTeNxRG9WyvRQUH+cG5eCDiUdKWHcisFAP0s
+      secure: +WKyXHSbYp4YS2XK1aaKvDbQrRFGSFdB/MKWZlRgqPjBD5OiYCaMshf0dxmu4j2M
     artifact: "%OUTPUT%"
     force_update: true
     on:
@@ -108,7 +108,7 @@ deploy:
     tag: $(appveyor_repo_tag_name)
     release: Release $(appveyor_repo_tag_name)
     auth_token:
-      secure: eZTbjLwRZpxLMEv/JRluSRNTPXElhTeNxRG9WyvRQUH+cG5eCDiUdKWHcisFAP0s
+      secure: +WKyXHSbYp4YS2XK1aaKvDbQrRFGSFdB/MKWZlRgqPjBD5OiYCaMshf0dxmu4j2M
     artifact: "%OUTPUT%"
     force_update: true
     on:
